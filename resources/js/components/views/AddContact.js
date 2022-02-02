@@ -40,7 +40,7 @@ class AddContact extends React.Component{
             <div className={'card my-3 py-3'}>
                 <form className={'col-8 offset-2'} onSubmit={this.onSubmitForm}>
                     <div className="form-group">
-                        <label className="col-form-label mt-4" htmlFor="fullName">Full-Name</label>
+                        <label className="col-form-label mt-4" htmlFor="fullName">Full-Name-test</label>
                         <input type="text" className="form-control" placeholder="Enter Full Name" id="fullName"
                                name="fullName" value={this.state.fullName} onChange={this.onInputChange}/>
                     </div>
