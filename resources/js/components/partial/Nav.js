@@ -23,6 +23,14 @@ const Nav = ()=> {
                             <Link className="nav-link" to="/addContact">addContact</Link>
                         </li>
                     </ul>
+                    <div className="d-flex">
+                        <ul className="navbar-nav me-auto">
+                            <li className="nav-item">
+                                <Link className="nav-link float-end" to="/Login">Login</Link>
+                                <Link className="nav-link float-end" to="/Register">Register</Link>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
