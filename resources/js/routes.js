@@ -10,7 +10,7 @@ import NotFound from "./components/partial/NotFound"
 
 const routes = () => (
     <Routes>
-        <Route path="/" element={ <Contacts /> } />
+        <Route path="/home" element={ <Contacts /> } />
         <Route path="/edit/:id" exact element={ <EditContact /> } />
         <Route path="/addContact" element={ <AddContact /> } />
         <Route path="/login" element={ <Login /> } />

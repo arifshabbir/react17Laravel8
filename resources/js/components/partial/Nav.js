@@ -1,6 +1,47 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import axios from "axios";
+import swal from "@sweetalert/with-react";
 const Nav = ()=> {
+
+    const logoutSubmit = (e) => {
+        e.preventDefault();
+
+        axios.post('logout').then(res => {
+            if (res.data.status === 200) {
+                localStorage.removeItem('auth_token')
+                localStorage.removeItem('auth_username')
+
+                swal({
+                    content: <div>Logged out successfully</div>,
+                    buttons: false,
+                    timer: 1000,
+                })
+            }
+        })
+
+    }
+
+    var AuthButtons = "";
+
+    if(!localStorage.getItem('auth_token')) {
+        AuthButtons = (
+            <li className="nav-item">
+                <Link className="nav-link float-end" to="/Register">Register</Link>
+                <Link className="nav-link float-end" to="/Login">Login</Link>
+            </li>
+        );
+    }else {
+        AuthButtons = (
+            <li className="nav-item">
+                <Link className="nav-link float-end btn btn-danger btn-sm text-white"
+                      onClick={logoutSubmit}
+                      to="/logout">logout</Link>
+            </li>
+        );
+
+    }
+
     return (
 
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -15,7 +56,7 @@ const Nav = ()=> {
                 <div className="collapse navbar-collapse" id="navbarColor01">
                     <ul className="navbar-nav me-auto">
                         <li className="nav-item">
-                            <Link className="nav-link active" to="/">Home
+                            <Link className="nav-link active" to="/home">Home
                                 <span className="visually-hidden">(current)</span>
                             </Link>
                         </li>
@@ -25,10 +66,7 @@ const Nav = ()=> {
                     </ul>
                     <div className="d-flex">
                         <ul className="navbar-nav me-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link float-end" to="/Login">Login</Link>
-                                <Link className="nav-link float-end" to="/Register">Register</Link>
-                            </li>
+                            {AuthButtons}
                         </ul>
                     </div>
                 </div>
